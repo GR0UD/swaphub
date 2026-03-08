@@ -1,7 +1,6 @@
 <div align="center">
   <img src="projekt/public/images/Logo.svg" alt="SwapHub Logo" width="200" height="200">
-  
-  # 🔄 SwapHub
+  # SwapHub
   
   A full-stack marketplace web application for swapping items with other users. Built as a final exam project for the **EUD Webudvikler (WU12)** program.
 </div>
@@ -169,7 +168,45 @@ The frontend runs on **http://localhost:3000**
 
 ---
 
-## 📸 Screenshots
+## � Deployment
+
+SwapHub is ready for production deployment! 
+
+### 🌐 Live Deployment
+
+- **Frontend**: Deploy to Vercel
+- **Backend**: Deploy to Railway, Render, or similar service
+
+### Quick Start
+
+See [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) for complete step-by-step deployment guide including:
+
+- Deploying frontend to Vercel
+- Deploying backend to Railway/Render
+- Setting up environment variables
+- Connecting frontend to production API
+- Troubleshooting common issues
+
+### Environment Variables
+
+**Frontend** (`projekt/.env.local`):
+```env
+NEXT_PUBLIC_API_URL=https://your-api-domain.com
+```
+
+**Backend** (`api/.env`):
+```env
+NODE_ENV=production
+JWT_SECRET=your_secure_secret_key_min_32_chars
+CORS_ORIGIN=https://your-vercel-domain.vercel.app
+DATABASE_URL=./storage/database.sqlite3
+```
+
+See `.env.example` files for all options.
+
+---
+
+## �📸 Screenshots
 
 > _Design based on the included Figma file (`SwapHub.fig`)_
 

@@ -9,9 +9,27 @@ const nextConfig = {
         pathname: "/file-bucket/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "**.railway.app",
+        pathname: "/file-bucket/**",
+        search: "",
+      },
+      {
+        protocol: "https",
+        hostname: "**.render.com",
+        pathname: "/file-bucket/**",
+        search: "",
+      },
+      {
+        protocol: "https",
+        hostname: "**.herokuapp.com",
+        pathname: "/file-bucket/**",
+        search: "",
+      },
     ],
     dangerouslyAllowSVG: true,
-    unoptimized: true,
+    unoptimized: process.env.NODE_ENV === "development",
   },
 };
 
