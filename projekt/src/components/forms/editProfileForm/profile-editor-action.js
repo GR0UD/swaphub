@@ -39,7 +39,7 @@ export async function updateUser(prevState, formData) {
     };
   }
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const id = cookieStore.get("user_id")?.value;
   const token = cookieStore.get("user_token")?.value;
 

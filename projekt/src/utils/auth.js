@@ -19,5 +19,6 @@ export function removeUserToken() {
   if (typeof document === "undefined") return;
   document.cookie =
     "user_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "user_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 // BILLAG https://www.mbloging.com/post/how-to-read-write-and-delete-cookies-in-javascript

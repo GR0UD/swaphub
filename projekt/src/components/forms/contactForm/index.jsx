@@ -8,7 +8,7 @@ import { submitContactForm } from "./contact-form-action";
 export default function ContactForm() {
   const [formState, formAction, isPending] = useActionState(
     submitContactForm,
-    {}
+    {},
   );
   const [showLoading, setShowLoading] = useState(false);
 
@@ -117,7 +117,7 @@ export default function ContactForm() {
               className={`contact-form__input ${
                 formState?.error?.email ? "contact-form__input--error" : ""
               }`}
-              placeholder="email@example.com"
+              placeholder="example@email.com"
               disabled={isPending}
               defaultValue={formState?.data?.email}
             />

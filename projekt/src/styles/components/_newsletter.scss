@@ -9,22 +9,10 @@
   &__container {
     border: 1px solid $border-default;
     border-radius: 1.2rem;
-    padding: 3.2rem;
+    padding: 2.4rem;
     max-width: 450px;
     width: 100%;
     position: relative;
-  }
-
-  &__icon {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-
-    svg {
-      font-size: 10rem;
-      color: $text-primary;
-      transform: rotate(15deg);
-    }
   }
 
   &__title {
@@ -85,7 +73,7 @@
   &__button {
     font-family: $default-font-family;
     font-size: $font-size-md;
-    font-weight: 600;
+    font-weight: 500;
     padding: 1.2rem 1.6rem;
     border: 1px solid $bg-brand;
     border-radius: 1rem;

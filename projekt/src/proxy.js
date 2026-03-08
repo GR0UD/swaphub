@@ -5,7 +5,7 @@ function hasUserToken(request) {
   return token && token.value;
 }
 
-export function middleware(request) {
+export function proxy(request) {
   const { pathname } = request.nextUrl;
   const userToken = hasUserToken(request);
 
@@ -18,10 +18,11 @@ export function middleware(request) {
     return NextResponse.redirect(url);
   }
 
-  if (pathname.startsWith("/profile")) {
+  // Beskyt profil og mine listings mod uautoriserede brugere
+  if (pathname.startsWith("/profile") || pathname.startsWith("/my-listings")) {
     if (!userToken) {
       const url = request.nextUrl.clone();
-      url.pathname = "/";
+      url.pathname = "/sign-in";
       return NextResponse.redirect(url);
     }
   }
@@ -30,5 +31,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/profile", "/sign-in", "/sign-up"],
+  matcher: ["/profile", "/sign-in", "/sign-up", "/my-listings/:path*"],
 };

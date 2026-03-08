@@ -66,7 +66,7 @@ export default async function signInAction(prevState, formData) {
     };
   }
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
 
   // Sæt sikre cookies for brugerens session
   cookieStore.set({

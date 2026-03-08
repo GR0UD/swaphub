@@ -7,6 +7,9 @@ import { isUserLoggedIn } from "@/utils/auth";
 import { formatDate } from "@/utils/dateFormat";
 import Link from "next/link";
 import UserOtherItems from "../user-other-items";
+import SwapProposal from "../swapProposal";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ItemDetails({ listingId }) {
   const { data: listing, error, loading } = useFetch(`/listings/${listingId}`);
@@ -20,12 +23,9 @@ export default function ItemDetails({ listingId }) {
     return <div className="error">Failed to load listing details</div>;
   }
 
-  const handleProposeSwap = () => {
-    console.log("Proposing swap for listing:", listingId);
-  };
-
   return (
     <div className="item-details">
+      <ToastContainer />
       <div className="item-details__container">
         <div className="item-details__image-container">
           {listing.asset?.url ? (
@@ -59,12 +59,10 @@ export default function ItemDetails({ listingId }) {
 
           <div className="item-details__actions">
             {isLoggedIn ? (
-              <button
-                onClick={handleProposeSwap}
-                className="item-details__swap-button"
-              >
-                Propose a swap
-              </button>
+              <SwapProposal
+                targetListingId={listingId}
+                listingOwnerId={listing.userId}
+              />
             ) : (
               <Link href="/sign-in" className="item-details__login-link">
                 Login to propose?

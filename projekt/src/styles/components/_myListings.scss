@@ -1,0 +1,157 @@
+@use "../core/variables" as *;
+
+.my-listings {
+  margin-top: 3.4rem;
+  font-family: $default-font-family;
+
+  &__loading,
+  &__error {
+    color: $text-secondary;
+    margin-bottom: 1rem;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0;
+  }
+
+  &__create-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: $bg-brand;
+    color: $text-on-brand;
+    padding: 0.8rem 1.6rem;
+    border-radius: 1rem;
+    font-size: $font-size-md;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    font-family: $default-font-family;
+
+    &:hover {
+      background-color: $color-charcoal;
+    }
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 4rem 0;
+    color: $text-secondary;
+
+    p {
+      margin-bottom: 2rem;
+      font-size: $font-size-lg;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+
+  &__card {
+    border: 1px solid $border-default;
+    border-radius: 1rem;
+    padding: 1rem;
+    background: $bg-primary;
+    display: flex;
+    flex-direction: column;
+    max-width: 260px;
+    transition: box-shadow 0.2s;
+  }
+
+  &__image {
+    height: 200px;
+    background: $bg-hover;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  &__img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0.5rem;
+    object-fit: contain;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  &__item-title {
+    font-size: $font-size-md;
+    font-weight: 500;
+    color: $text-primary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  &__edit-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background-color: $bg-button;
+    color: $text-primary;
+    border: 1px solid $border-default;
+    padding: 0.6rem 1rem;
+    border-radius: 0.6rem;
+    font-size: $font-size-sm;
+    font-family: $default-font-family;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $bg-hover;
+    }
+  }
+
+  &__delete-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background-color: #fff0f0;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 0.6rem 1rem;
+    border-radius: 0.6rem;
+    font-size: $font-size-sm;
+    font-family: $default-font-family;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #fde2e2;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}

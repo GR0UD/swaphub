@@ -49,16 +49,7 @@ export default function SiteHeader() {
                 Listings
               </Link>
             </li>
-            <li className="site-header__nav-item">
-              <Link
-                href="/community"
-                className={`site-header__nav-link${
-                  isActive("/community") ? " active" : ""
-                }`}
-              >
-                Community
-              </Link>
-            </li>
+
             <li className="site-header__nav-item">
               <Link
                 href="/contact"
@@ -70,6 +61,18 @@ export default function SiteHeader() {
               </Link>
             </li>
             <>
+              {isLoggedIn && (
+                <li className="site-header__nav-item">
+                  <Link
+                    href="/my-listings"
+                    className={`site-header__nav-link${
+                      isActive("/my-listings") ? " active" : ""
+                    }`}
+                  >
+                    My Listings
+                  </Link>
+                </li>
+              )}
               <li className="site-header__nav-item">
                 <Link
                   href="/sign-in"

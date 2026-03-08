@@ -11,6 +11,7 @@ const FILTERS = [
   { label: "New", value: "new" },
   { label: "A-Z Ascending", value: "alpha-asc" },
   { label: "Z-A Descending", value: "alpha-desc" },
+  { label: "By User", value: "by-user" },
 ];
 
 const sortItems = (a, b, type) => {
@@ -25,6 +26,8 @@ const sortItems = (a, b, type) => {
         .localeCompare((a.title || "").toLowerCase());
     case "new":
       return new Date(b.createdAt) - new Date(a.createdAt);
+    case "by-user":
+      return (a.userId || 0) - (b.userId || 0);
     default:
       return 0;
   }
@@ -34,23 +37,31 @@ const SORT_FUNCTIONS = {
   "alpha-asc": (a, b) => sortItems(a, b, "alpha-asc"),
   "alpha-desc": (a, b) => sortItems(a, b, "alpha-desc"),
   new: (a, b) => sortItems(a, b, "new"),
+  "by-user": (a, b) => sortItems(a, b, "by-user"),
 };
 
 export default function Listing() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("new");
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8; // hvor mange der skal vises?
+  const itemsPerPage = 6; // kravsspecifikation: maks 6 bytte-ting ad gangen
   const { data, error, loading } = useFetch("/listings");
+  const { data: categories } = useFetch("/categories");
 
   const filteredItems = useMemo(() => {
     let result = Array.isArray(data) ? data : [];
+
+    // Filtrer efter kategori
+    if (selectedCategory) {
+      result = result.filter((item) => item.categoryId === selectedCategory);
+    }
 
     if (search) {
       result = result.filter(
         (item) =>
           item.title?.toLowerCase().includes(search.toLowerCase()) ||
-          item.description?.toLowerCase().includes(search.toLowerCase())
+          item.description?.toLowerCase().includes(search.toLowerCase()),
       );
     }
 
@@ -60,7 +71,12 @@ export default function Listing() {
     }
 
     return result;
-  }, [data, search, filter]);
+  }, [data, search, filter, selectedCategory]);
+
+  // Nulstil side når der søges eller filtreres
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search, filter, selectedCategory]);
 
   const paginatedItems = useMemo(() => {
     // gemmer dem der skal vises på den aktuelle side så vi ikke skal beregne det hver gang
@@ -77,9 +93,11 @@ export default function Listing() {
         const ref = titleRefs.current[item.id];
         if (ref?.scrollWidth > ref?.clientWidth) acc[item.id] = true;
         return acc;
-      }, {})
+      }, {}),
     );
   }, [paginatedItems]);
+
+  const categoryList = Array.isArray(categories) ? categories : [];
 
   return (
     <div className="listing">
@@ -95,6 +113,33 @@ export default function Listing() {
           onFilterChange={setFilter}
         />
       </div>
+
+      {/* Opgave A: Kategori-filtrering */}
+      {categoryList.length > 0 && (
+        <div className="listing__categories">
+          <button
+            className={`listing__category-btn${
+              !selectedCategory ? " listing__category-btn--active" : ""
+            }`}
+            onClick={() => setSelectedCategory(null)}
+          >
+            All
+          </button>
+          {categoryList.map((cat) => (
+            <button
+              key={cat.id}
+              className={`listing__category-btn${
+                selectedCategory === cat.id
+                  ? " listing__category-btn--active"
+                  : ""
+              }`}
+              onClick={() => setSelectedCategory(cat.id)}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
+      )}
 
       {search && filteredItems.length === 0 && !loading && (
         <div className="listing__search-results">

@@ -2,12 +2,12 @@ import ItemDetails from "@/components/item-details";
 
 export const metadata = { title: "Details" };
 
-export default function Details({ params }) {
-  const listingId = params.id;
+export default async function Details({ params }) {
+  const { id } = await params;
 
   return (
     <>
-      <ItemDetails listingId={listingId} />
+      <ItemDetails listingId={id} />
     </>
   );
 }

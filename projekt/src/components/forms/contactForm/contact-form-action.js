@@ -79,10 +79,9 @@ export async function submitContactForm(prevState, formData) {
       submittedAt: new Date().toISOString(),
     };
 
-    console.log("Contact Form Submission:", contactData);
-
-    // Simuler API kald med delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // API'et har ikke et kontakt-endpoint, så vi simulerer det
+    // I produktion ville dette sende til et backend-endpoint
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     return { success: true };
   } catch (err) {

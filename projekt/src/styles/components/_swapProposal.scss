@@ -1,0 +1,145 @@
+@use "../core/variables" as *;
+
+.swap-proposal {
+  &__trigger {
+    background-color: $bg-button;
+    color: $text-primary;
+    border: 1px solid #767676;
+    padding: 0.8rem 1.6rem;
+    font-weight: 500;
+    border-radius: 1rem;
+    transition:
+      background-color 0.2s,
+      border-color 0.2s,
+      color 0.2s;
+    font-family: $default-font-family;
+    font-size: $font-size-md;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $bg-hover;
+      border-color: $bg-hover;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  &__modal {
+    background: $bg-primary;
+    border: 1px solid $border-default;
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 420px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  &__modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  &__heading {
+    font-size: $font-size-md;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: $bg-button;
+    border: 1px solid $border-default;
+    border-radius: 0.6rem;
+    font-size: 1.8rem;
+    color: $text-primary;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+
+    &:hover {
+      background-color: red;
+      color: white;
+    }
+  }
+
+  &__empty {
+    color: $text-secondary;
+    font-size: $font-size-sm;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem;
+    border: 1px solid $border-default;
+    border-radius: 0.6rem;
+    background: $bg-primary;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: $default-font-family;
+
+    &:hover {
+      background-color: $bg-hover;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__item-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: $bg-hover;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: $bg-hover;
+  }
+
+  &__item-title {
+    font-size: $font-size-md;
+    color: $text-primary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

@@ -1,6 +1,5 @@
 "use client";
 
-import { MdOutlineMailOutline } from "react-icons/md";
 import { useActionState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,7 +9,7 @@ import { useEffect } from "react";
 export default function NewsLetterForm() {
   const [formState, formAction, isPending] = useActionState(
     subscribeToNewsletter,
-    {}
+    {},
   );
 
   useEffect(() => {
@@ -44,9 +43,6 @@ export default function NewsLetterForm() {
     <>
       <div className="newsletter">
         <div className="newsletter__container">
-          <div className="newsletter__icon">
-            <MdOutlineMailOutline />
-          </div>
           <h2 className="newsletter__title">Stay Up To Date</h2>
           <p className="newsletter__subtitle">
             For the latest news and updates from Command Shift, join our mailing
@@ -56,7 +52,7 @@ export default function NewsLetterForm() {
             <input
               type="email"
               name="email"
-              placeholder="hello@world.com"
+              placeholder="example@email.com"
               className={`newsletter__input ${
                 formState.error ? "newsletter__input--error" : ""
               }`}
