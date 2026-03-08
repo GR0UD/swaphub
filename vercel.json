@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "buildCommand": "npm --prefix projekt run build",
+  "devCommand": "npm --prefix projekt run dev",
+  "installCommand": "npm --prefix projekt install",
+  "framework": "nextjs",
+  "projectSettings": {
+    "sourceFilesOutsideRootDirectory": true
+  },
+  "public": true,
+  "env": {
+    "NEXT_PUBLIC_API_URL": {
+      "description": "Backend API URL (e.g., https://swaphub-api.railway.app)"
+    }
+  },
+  "envPrefix": "NEXT_PUBLIC_"
+}

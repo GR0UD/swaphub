@@ -1,0 +1,48 @@
+# Environment variables - NEVER commit actual .env files!
+# DO commit .env.example files for reference
+.env
+.env.local
+.env.*.local
+.env.production.local
+!.env.example
+!api/.env.example
+!projekt/.env.example
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vercel
+.vercel/
+
+# Next.js
+.next/
+out/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Uploads & sensitive data
+api/assets/
+api/storage/database.sqlite3
+api/logs/
+
+# Build artifacts
+dist/
+coverage/
+
+# Yarn
+yarn.lock
